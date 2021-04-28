@@ -19,7 +19,12 @@ export class ViberBot {
   constructor() {
     this.client = client;
     if (!this.client) {
-      this.client = ViberClient.connect(VIBER_TOKEN);
+      this.client = new ViberClient({
+        accessToken: VIBER_TOKEN,
+        sender: {
+          name: 'Pogoda'
+        }
+      });
       this.client
         .setWebhook(`${BASE_URL}${ROUTES_URLS.viber}`, ['subscribed', 'conversation_started'])
         .catch(e => console.log(e));
