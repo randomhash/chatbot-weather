@@ -37,3 +37,7 @@ Thumbs.db
 
 # Ignore built ts files
 dist/**/*
+
+# ignore yarn.lock, as server is prohibing installs from the yarn, and need to use basic npm
+# problem with broken PATH and /lib/lib modules installation
+yarn.lock
