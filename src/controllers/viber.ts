@@ -18,6 +18,7 @@ export class ViberBot {
   client: any;
   constructor() {
     this.client = client;
+    log.info(`${BASE_URL}${ROUTES_URLS.viber}`);
     if (!this.client) {
       this.client = ViberClient.connect(VIBER_TOKEN);
       this.client
