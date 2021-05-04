@@ -13,7 +13,7 @@ export enum REPLIES_PAYLOAD {
   'getNowWeatherSarni' = 'getNowWeatherSarni',
   'getInfo' = 'getInfo',
   'getLegalInfo' = 'getLegalInfo',
-  'extremeTemperatures' = 'extremeTemperatures'
+  'extremeTemperatures' = 'extremeTemperatures',
 }
 
 export const defaultKeyboard: {
@@ -34,7 +34,7 @@ export const defaultKeyboard: {
         TextSize: 'regular',
         TextVAlign: 'middle',
         TextHAlign: 'center',
-        TextOpacity: 60
+        TextOpacity: 60,
       },
       {
         Columns: 3,
@@ -47,7 +47,7 @@ export const defaultKeyboard: {
         TextSize: 'regular',
         TextVAlign: 'middle',
         TextHAlign: 'center',
-        TextOpacity: 60
+        TextOpacity: 60,
       },
       {
         Columns: 3,
@@ -60,7 +60,7 @@ export const defaultKeyboard: {
         TextSize: 'regular',
         TextVAlign: 'middle',
         TextHAlign: 'center',
-        TextOpacity: 60
+        TextOpacity: 60,
       },
       {
         Columns: 3,
@@ -73,7 +73,7 @@ export const defaultKeyboard: {
         TextSize: 'regular',
         TextVAlign: 'middle',
         TextHAlign: 'center',
-        TextOpacity: 60
+        TextOpacity: 60,
       },
       {
         Columns: 3,
@@ -86,7 +86,7 @@ export const defaultKeyboard: {
         TextSize: 'regular',
         TextVAlign: 'middle',
         TextHAlign: 'center',
-        TextOpacity: 60
+        TextOpacity: 60,
       },
       {
         Columns: 3,
@@ -99,10 +99,10 @@ export const defaultKeyboard: {
         TextSize: 'regular',
         TextVAlign: 'middle',
         TextHAlign: 'center',
-        TextOpacity: 60
-      }
-    ]
-  }
+        TextOpacity: 60,
+      },
+    ],
+  },
 };
 
 export const getWeatherNowKeyboard: {
@@ -123,7 +123,7 @@ export const getWeatherNowKeyboard: {
         TextSize: 'regular',
         TextVAlign: 'middle',
         TextHAlign: 'center',
-        TextOpacity: 60
+        TextOpacity: 60,
       },
       {
         Columns: 3,
@@ -136,7 +136,7 @@ export const getWeatherNowKeyboard: {
         TextSize: 'regular',
         TextVAlign: 'middle',
         TextHAlign: 'center',
-        TextOpacity: 60
+        TextOpacity: 60,
       },
       {
         Columns: 3,
@@ -149,7 +149,7 @@ export const getWeatherNowKeyboard: {
         TextSize: 'regular',
         TextVAlign: 'middle',
         TextHAlign: 'center',
-        TextOpacity: 60
+        TextOpacity: 60,
       },
       {
         Columns: 3,
@@ -162,8 +162,8 @@ export const getWeatherNowKeyboard: {
         TextSize: 'regular',
         TextVAlign: 'middle',
         TextHAlign: 'center',
-        TextOpacity: 60
-      }
-    ]
-  }
+        TextOpacity: 60,
+      },
+    ],
+  },
 };

@@ -13,7 +13,7 @@ const forecastSchema = new mongoose.Schema(
     date: Date,
     upvotes: Number,
     downvotes: Number,
-    score: Number
+    score: Number,
   },
   {timestamps: true}
 );

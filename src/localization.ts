@@ -1,5 +1,5 @@
 const common = {
-  empty: 'Відсутні'
+  empty: 'Відсутні',
 };
 
 export default {
@@ -17,7 +17,7 @@ export default {
   rivne: 'Рівне',
   sarni: 'Сарни',
   dubno: 'Дубно',
-  lutsk: 'Луцьк'
+  lutsk: 'Луцьк',
 };
 
 export const excuseMapping = {
@@ -25,5 +25,5 @@ export const excuseMapping = {
   rangeForecastNotFound: 'Прогноз погоди на вказані дати не знайдено',
   stormForecastNotFound: common.empty,
   illegalPayload: 'Скористайтесь меню для того, щоб дізнатися погоду)',
-  infoNotFound: 'Наразі у нас немає для вас корисної інформації, загляньте пізніше ^_^'
+  infoNotFound: 'Наразі у нас немає для вас корисної інформації, загляньте пізніше ^_^',
 };

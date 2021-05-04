@@ -1,5 +1,4 @@
 import uuid from 'uuid/v1';
-import moment from 'moment-timezone';
 import {ForecastDocument, ForecastMongo} from '../models/Forecast';
 import {Forecast as IForecast} from '../types/forecast';
 import {DAY_MILISECONDS, convertToUkraineTime} from '../util/time';
@@ -10,7 +9,7 @@ const CITY_TO_CODE = {
   rivne: 33301,
   dubno: 33296,
   sarni: 33088,
-  lutsk: 33187
+  lutsk: 33187,
 };
 
 function getSelectString(city) {
@@ -24,7 +23,7 @@ export async function getNowWeatherByCity(city = 'rivne'): Promise<string> {
   const pCon = connection.promise();
   const weatherNow = await pCon.query(getSelectString(city));
   const [
-    {year, mouns: month, day, time, temperature, wind, wind_direction, pressure, humidity}
+    {year, mouns: month, day, time, temperature, wind, wind_direction, pressure, humidity},
   ] = weatherNow[0];
 
   const {day: correctDay, time: correctTime} = convertToUkraineTime(day, time);
@@ -37,7 +36,7 @@ export async function getNowWeatherByCity(city = 'rivne'): Promise<string> {
 
 export async function getForecastByTimestampExect(timestamp: number): Promise<ForecastDocument> {
   return ForecastMongo.findOne({
-    $and: [{exectDate: {$gte: timestamp}}, {exectDate: {$lte: timestamp + DAY_MILISECONDS - 1}}]
+    $and: [{exectDate: {$gte: timestamp}}, {exectDate: {$lte: timestamp + DAY_MILISECONDS - 1}}],
   });
 }
 
@@ -50,11 +49,11 @@ export async function getForecastInRange(
       {
         $and: [
           {exectDate: {$gte: timestampFrom}},
-          {exectDate: {$lte: timestampTo + DAY_MILISECONDS - 1}}
-        ]
+          {exectDate: {$lte: timestampTo + DAY_MILISECONDS - 1}},
+        ],
       },
-      {dateFrom: {$gte: timestampFrom}}
-    ]
+      {dateFrom: {$gte: timestampFrom}},
+    ],
   }).exec();
   log.info(`Fetched ${forecasts.length} forecasts from mongo`);
 
@@ -86,7 +85,7 @@ function getCorrectForecast({forecasts, timestampFrom, timestampTo}): ForecastDo
     return;
   }
 
-  return correctForecasts.sort(function(a, b) {
+  return correctForecasts.sort(function (a, b) {
     return b.dateFrom - a.dateFrom;
   })[0];
 }
@@ -105,15 +104,16 @@ export async function getExtrimeWeatherForToday(): Promise<string> {
     'Вересня',
     'Жовтня',
     'Листопада',
-    'Грудня'
+    'Грудня',
   ];
   const d = new Date();
   const connection = await getMysqlConnection();
   const pCon = connection.promise();
   const extremeWeatherNow = await pCon
     .query(
-      `SELECT * FROM  temperaturs WHERE \`day\` = ${d.getDate()} AND \`month\`= ${new Date().getMonth() +
-        1}`
+      `SELECT * FROM  temperaturs WHERE \`day\` = ${d.getDate()} AND \`month\`= ${
+        new Date().getMonth() + 1
+      }`
     )
     .catch(e => log.error(e));
   log.info('Fetched records for today');

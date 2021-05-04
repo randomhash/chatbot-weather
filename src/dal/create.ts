@@ -7,7 +7,7 @@ export const CUSTOM_IDS = {
   threeDays: 'threedays',
   storm: 'storm',
   legalInfo: 'legalInfo',
-  info: 'info'
+  info: 'info',
 };
 export async function createForecast(forecast: IForecast): Promise<ForecastDocument> {
   const _id = uuid();

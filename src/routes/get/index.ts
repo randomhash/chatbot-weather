@@ -12,7 +12,7 @@ export async function getForecastForTodayHandler(req: Request, res: Response): P
 
 export async function getForecastForDateHandler(req: Request, res: Response): Promise<Response> {
   const {
-    query: {date}
+    query: {date},
   } = req;
   const forecast = await dal.getForecastByTimestampExect(getUnixTimeFromString(date as string));
   log.info('Fetched forecast');
@@ -22,11 +22,11 @@ export async function getForecastForDateHandler(req: Request, res: Response): Pr
 
 export async function getForecastInRangeHandler(req: Request, res: Response): Promise<Response> {
   const {
-    query: {dateFrom, dateTo}
+    query: {dateFrom, dateTo},
   } = req;
   const forecast = await dal.getForecastInRange(
-    getUnixTimeFromString(dateFrom),
-    getUnixTimeFromString(dateTo)
+    getUnixTimeFromString(dateFrom as string),
+    getUnixTimeFromString(dateTo as string)
   );
   log.info('Fetched forecast');
 

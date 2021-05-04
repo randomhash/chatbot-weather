@@ -6,7 +6,7 @@ import {
   PAYLOAD_NOW_SPLITTER,
   REPLIES_PAYLOAD,
   defaultKeyboard,
-  getWeatherNowKeyboard
+  getWeatherNowKeyboard,
 } from './helpers';
 import {dal} from '../dal';
 import log from '../util/logger';
@@ -22,10 +22,12 @@ export class ViberBot {
       this.client = new ViberClient({
         accessToken: VIBER_TOKEN,
         sender: {
-          name: 'Pogoda'
-        }
+          name: 'Pogoda',
+        },
       });
-      this.client.setWebhook(`${BASE_URL}${ROUTES_URLS.viber}`).catch(e => console.log(e));
+      this.client
+        .setWebhook(`${BASE_URL}${ROUTES_URLS.viber}`, ['subscribed', 'conversation_started'])
+        .catch(e => console.log(e));
       // eslint-disable-next-line prefer-destructuring
       client = this.client;
     }
@@ -47,7 +49,7 @@ export class ViberBot {
       ButtonsGroupColumns: 6,
       ButtonsGroupRows: 7,
       BgColor: '#FFFFFF',
-      Buttons: buttons
+      Buttons: buttons,
     });
   }
 
@@ -59,15 +61,18 @@ export class ViberBot {
     const idsMapping = {
       [REPLIES_PAYLOAD.getTodayWeather]: {
         id: CUSTOM_IDS.today,
-        excuse: excuseMapping.exectForecastNotFound
+        excuse: excuseMapping.exectForecastNotFound,
       },
       [REPLIES_PAYLOAD.getWeather3Days]: {
         id: CUSTOM_IDS.threeDays,
-        excuse: excuseMapping.rangeForecastNotFound
+        excuse: excuseMapping.rangeForecastNotFound,
       },
       [REPLIES_PAYLOAD.storm]: {id: CUSTOM_IDS.storm, excuse: excuseMapping.stormForecastNotFound},
       [REPLIES_PAYLOAD.getInfo]: {id: CUSTOM_IDS.info, excuse: excuseMapping.infoNotFound},
-      [REPLIES_PAYLOAD.getLegalInfo]: {id: CUSTOM_IDS.legalInfo, excuse: excuseMapping.infoNotFound}
+      [REPLIES_PAYLOAD.getLegalInfo]: {
+        id: CUSTOM_IDS.legalInfo,
+        excuse: excuseMapping.infoNotFound,
+      },
     };
     const correctMapping = idsMapping[referer];
 
@@ -107,7 +112,7 @@ export class ViberBot {
         REPLIES_PAYLOAD.getNowWeatherDubno,
         REPLIES_PAYLOAD.getNowWeatherRivne,
         REPLIES_PAYLOAD.getNowWeatherSarni,
-        REPLIES_PAYLOAD.getNowWeatherLutsk
+        REPLIES_PAYLOAD.getNowWeatherLutsk,
       ].includes(payload)
     ) {
       const city = toLower(payload.split(PAYLOAD_NOW_SPLITTER)[1]);
@@ -134,10 +139,20 @@ export class ViberBot {
     return this.sendMessage(userId, forecast.text);
   }
 
-  public async newUserEnrollment({id, name, language, country, api_version: apiVersion}) {
+  public async newUserEnrollment(_: NewUserEnrollmentParams) {
+    console.log(_);
+
     return 'not implemented';
   }
 }
+
+type NewUserEnrollmentParams = {
+  id: string;
+  name: string;
+  language: string;
+  country: string;
+  api_version: any;
+};
 
 export function getClient() {
   return client || new ViberBot();

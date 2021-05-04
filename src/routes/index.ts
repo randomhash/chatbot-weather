@@ -6,12 +6,12 @@ import {
   createForecastThreeDaysHandler,
   createForecastTodayHandler,
   createInfoContentHandler,
-  createLegalInfoContentHandler
+  createLegalInfoContentHandler,
 } from './post';
 import {
   getForecastForDateHandler,
   getForecastForTodayHandler,
-  getForecastInRangeHandler
+  getForecastInRangeHandler,
 } from './get';
 import {updateExectForecastHandler, updateRangeForecastHandler} from './put';
 import {viberHander} from './webhooks';
@@ -28,7 +28,7 @@ export const ROUTES_URLS = {
   forecastByDate: '/forecasts/exect',
   forecastByRange: '/forecasts/range',
   info: '/information',
-  legalInfo: '/legal-info'
+  legalInfo: '/legal-info',
 };
 
 export const router = express.Router();

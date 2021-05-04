@@ -10,7 +10,7 @@ const Messages = {
   combinedDates: 'Date range and exect date used together',
   dateInPast: 'Date is in the past, forecast not valid',
   emptyText: 'No forecast to store in database',
-  invalidDates: 'One or more of the providen dates is invalid'
+  invalidDates: 'One or more of the providen dates is invalid',
 };
 
 export async function createForecastHandler(req: Request, res: Response): Promise<Response> {
@@ -59,7 +59,7 @@ export async function validateForecast({
   exectDate,
   dateFrom,
   dateTo,
-  res
+  res,
 }: {
   text: string;
   exectDate?: string;
