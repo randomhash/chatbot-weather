@@ -23,6 +23,10 @@
       "post-commit": "git update-index --again"
     }
   },
+  "babel": {
+    "extends": "@shelf/babel-config/backend"
+  },
+  "prettier": "@shelf/prettier-config",
   "lint-staged": {
     "*.{html,json,md,yml,graphql}": [
       "prettier --write",
@@ -32,16 +36,6 @@
       "eslint --fix",
       "git add"
     ]
-  },
-  "jest": {
-    "reporters": [
-      "default",
-      "jest-junit"
-    ],
-    "setupFilesAfterEnv": [
-      "<rootDir>/common-mocks.js"
-    ],
-    "testEnvironment": "node"
   },
   "dependencies": {
     "bluebird": "3.5.5",
@@ -73,7 +67,9 @@
     "@babel/plugin-proposal-object-rest-spread": "7.13.8",
     "@babel/preset-env": "7.14.1",
     "@babel/preset-typescript": "7.13.0",
-    "@shelf/eslint-config": "0.8.2",
+    "@shelf/babel-config": "0.1.2",
+    "@shelf/eslint-config": "1.1.0",
+    "@shelf/prettier-config": "1.0.0",
     "@types/async": "3.2.6",
     "@types/bcrypt-nodejs": "0.0.30",
     "@types/bluebird": "3.5.27",
@@ -97,14 +93,14 @@
     "@types/request": "2.48.3",
     "@types/shelljs": "0.8.5",
     "@types/winston": "2.4.4",
-    "@typescript-eslint/eslint-plugin": "2.3.1",
-    "@typescript-eslint/parser": "2.3.1",
-    "babel-jest": "24.9.0",
-    "eslint": "6.4.0",
+    "@typescript-eslint/eslint-plugin": "4.22.1",
+    "@typescript-eslint/parser": "4.22.1",
+    "babel-jest": "26.6.3",
+    "eslint": "7.25.0",
     "husky": "3.0.9",
-    "jest": "24.9.0",
+    "jest": "26.6.3",
     "lint-staged": "9.4.2",
-    "prettier": "1.19.1",
+    "prettier": "2.2.1",
     "shelljs": "0.8.3",
     "ts-jest": "24.1.0",
     "ts-node": "8.4.1",
