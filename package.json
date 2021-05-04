@@ -49,7 +49,7 @@
     "express-session": "1.16.2",
     "express-validator": "6.2.0",
     "lodash": "4.17.21",
-    "messaging-api-viber": "1.0.4",
+    "messaging-api-viber": "0.8.2",
     "moment": "2.24.0",
     "moment-timezone": "0.5.27",
     "mongoose": "5.7.1",
