@@ -25,9 +25,7 @@ export class ViberBot {
           name: 'Pogoda'
         }
       });
-      this.client
-        .setWebhook(`${BASE_URL}${ROUTES_URLS.viber}`, ['subscribed', 'conversation_started'])
-        .catch(e => console.log(e));
+      this.client.setWebhook(`${BASE_URL}${ROUTES_URLS.viber}`).catch(e => console.log(e));
       // eslint-disable-next-line prefer-destructuring
       client = this.client;
     }
