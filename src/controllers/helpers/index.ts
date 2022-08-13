@@ -24,7 +24,7 @@ export const defaultKeyboard: {
     BgColor: '#FFFFFF',
     Buttons: [
       {
-        Columns: 3,
+        Columns: 6,
         Rows: 1,
         BgColor: '#33ccff',
         BgLoop: true,
